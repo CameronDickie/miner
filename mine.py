@@ -40,33 +40,24 @@ def startMining(hotbar, toolMultiplier, eff, durability):
     mouse.release(Button.left)
 
 def on_press(key):
-    print("keypress read")
-    try:
-        print('alphanumeric key {0} pressed'.format(
-            key.char))
-    except AttributeError:
-        print('special key {0} pressed'.format(
-            key))
+    print("the key {0} has been pressed".format(key))
+    if key == keyboard.Key.f7:
+        print("False")
+        return False
 def on_release(key):
-    print('{0} released'.format(
-        key))
-    if key == keyboard.Key.esc:
+    if key == keyboard.Key.f8:
         # Stop listener
         return False
 
 def wait_for_user_input(hotbar, toolMultiplier, eff, durability):
-    #listener = Listener(on_press=onPress, on_release=onRelease)
-    #listener.start()
-    #listener.join()
     with keyboard.Listener(
         on_press=on_press,
         on_release=on_release
     ) as listener:
         print("listening for keypress")
         listener.join()
-        print("join complete")
     print("Starting to mine")
-    # startMining(hotbar, toolMultiplier, eff, durability)
+    startMining(hotbar, toolMultiplier, eff, durability)
 
 
 
@@ -74,57 +65,48 @@ pick = ""
 print("Please enter the type of pickaxe(s)")
 hotbar = []
 efficiency = []
-# while(True):
-#     pick = input("enter b to stop entering picks\n")
-#     pick = pick.lower()
-#     if(len(hotbar) > 10):
-#         break
-#     elif(pick == "b"):
-#         break
-#     elif(pick == "wood"):
-#         eff = int(input("Please enter the level of efficiency (if none, enter 0)\n"))
-#         efficiency.append(eff)
-#         hotbar.append(toolMultiplier[0])
-#         print("wood added")
-#     elif(pick == "stone"):
-#         eff = int(input("Please enter the level of efficiency (if none, enter 0)\n"))
-#         efficiency.append(eff)
-#         hotbar.append(toolMultiplier[1])
-#         print("stone added")
-#     elif(pick == "iron"):
-#         eff = int(input("Please enter the level of efficiency (if none, enter 0)\n"))
-#         efficiency.append(eff)
-#         hotbar.append(toolMultiplier[2])
-#         print("iron added")
-#     elif(pick == "diamond"):
-#         eff = int(input("Please enter the level of efficiency (if none, enter 0)\n"))
-#         efficiency.append(eff)
-#         hotbar.append(toolMultiplier[3])
-#         print("diamond added")
-#     elif(pick == "netherite"):
-#         eff = int(input("Please enter the level of efficiency (if none, enter 0)\n"))
-#         efficiency.append(eff)
-#         hotbar.append(toolMultiplier[4])
-#         print("netherite added")
-#     elif(pick == "gold"):
-#         eff = int(input("Please enter the level of efficiency (if none, enter 0)\n"))
-#         efficiency.append(eff)
-#         hotbar.append(toolMultiplier[5])
-#         print("gold added")
-#     else:
-#         print("invalid input")
+while(True):
+    pick = input("enter b to stop entering picks\n")
+    pick = pick.lower()
+    if(len(hotbar) > 10):
+        break
+    elif(pick == "b"):
+        break
+    elif(pick == "wood"):
+        eff = int(input("Please enter the level of efficiency (if none, enter 0)\n"))
+        efficiency.append(eff)
+        hotbar.append(toolMultiplier[0])
+        print("wood added")
+    elif(pick == "stone"):
+        eff = int(input("Please enter the level of efficiency (if none, enter 0)\n"))
+        efficiency.append(eff)
+        hotbar.append(toolMultiplier[1])
+        print("stone added")
+    elif(pick == "iron"):
+        eff = int(input("Please enter the level of efficiency (if none, enter 0)\n"))
+        efficiency.append(eff)
+        hotbar.append(toolMultiplier[2])
+        print("iron added")
+    elif(pick == "diamond"):
+        eff = int(input("Please enter the level of efficiency (if none, enter 0)\n"))
+        efficiency.append(eff)
+        hotbar.append(toolMultiplier[3])
+        print("diamond added")
+    elif(pick == "netherite"):
+        eff = int(input("Please enter the level of efficiency (if none, enter 0)\n"))
+        efficiency.append(eff)
+        hotbar.append(toolMultiplier[4])
+        print("netherite added")
+    elif(pick == "gold"):
+        eff = int(input("Please enter the level of efficiency (if none, enter 0)\n"))
+        efficiency.append(eff)
+        hotbar.append(toolMultiplier[5])
+        print("gold added")
+    else:
+        print("invalid input")
 
-# if(len(hotbar) == 0):
-#     print("You will need to re-run this program and select a pick")
+if(len(hotbar) == 0):
+    print("You will need to re-run this program and select a pick")
 
-print("Press / on any software to start mining")
+print("Press f7 on any software to start mining")
 wait_for_user_input(hotbar, toolMultiplier, efficiency, durability)
-#calculate how long to click for each pick, and iterate to the next pick
-
-
-
-
-
-#Read pointer position
-print('The current pointer position is {0}'.format(mouse.position))
-
